@@ -5,12 +5,6 @@ class Configurable extends \Magento\Swatches\Block\Product\Renderer\Configurable
 {
     const SWATCH_RENDERER_TEMPLATE = 'MageSuite_ServerSideSwatches::product/view/renderer.phtml';
 
-    protected function getRendererTemplate()
-    {
-        return $this->isProductHasSwatchAttribute() ?
-            self::SWATCH_RENDERER_TEMPLATE : self::CONFIGURABLE_RENDERER_TEMPLATE;
-    }
-
     public function getSwatchProductImage(\Magento\Catalog\Model\Product $childProduct, $imageType)
     {
         $imgUrl = parent::getSwatchProductImage($childProduct, $imageType);
@@ -18,6 +12,12 @@ class Configurable extends \Magento\Swatches\Block\Product\Renderer\Configurable
             return $imgUrl;
         }
         return '';
+    }
+
+    protected function getRendererTemplate()
+    {
+        return $this->isProductHasSwatchAttribute() ?
+            self::SWATCH_RENDERER_TEMPLATE : self::CONFIGURABLE_RENDERER_TEMPLATE;
     }
 
     protected function getCacheLifetime()
