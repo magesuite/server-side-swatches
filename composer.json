@@ -1,0 +1,15 @@
+{
+    "name": "creativestyle/magesuite-server-side-swatches",
+    "description": "Magento module that moves rendering of swatches from JavaScript to PHP for better frontend performance.",
+    "homepage": "https://creativestyle.de",
+    "license": "OSL-3.0",
+    "type": "magento2-module",
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "MageSuite\\ServerSideSwatches\\": ""
+        }
+    }
+}
