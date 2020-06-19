@@ -10,9 +10,9 @@ $productId = $block->getProduct()->getId();
 /** @var \Magento\Swatches\ViewModel\Product\Renderer\Configurable $configurableViewModel */
 $configurableViewModel = $block->getConfigurableViewModel();
 
-$config = $block->getConfig();
-$swatchConfig = $block->getSwatchConfig();
-$sizeConfig = $block->getSwatchSizeConfig();
+$config = json_decode($block->getJsonConfig(), true);
+$swatchConfig = json_decode($block->getJsonSwatchConfig(), true);
+$sizeConfig = json_decode($block->getJsonSwatchSizeConfig(), true);
 $chooseText = $block->getChooseText();
 $classes = $block->getClasses();
 ?>
