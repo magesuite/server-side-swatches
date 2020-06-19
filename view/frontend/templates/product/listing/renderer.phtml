@@ -1,0 +1,69 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+<?php
+/** @var \Magento\Swatches\Block\Product\Renderer\Listing\Configurable $block */
+$productId = $block->getProduct()->getId();
+/** @var \Magento\Swatches\ViewModel\Product\Renderer\Configurable $configurableViewModel */
+$configurableViewModel = $block->getConfigurableViewModel();
+
+$config = $block->getConfig();
+$swatchConfig = $block->getSwatchConfig();
+$sizeConfig = $block->getSwatchSizeConfig();
+$chooseText = $block->getChooseText();
+$classes = $block->getClasses();
+?>
+<div class="swatch-opt-<?= $block->escapeHtmlAttr($productId) ?>"
+     data-role="swatch-option-<?= $block->escapeHtmlAttr($productId) ?>">
+    <?= $block->getChildBlock('swatch_attributes')
+        ->setConfig($config)
+        ->setSwatchConfig($swatchConfig)
+        ->setSizeConfig($sizeConfig)
+        ->setClasses($classes)
+        ->setMoreButtonLimit($block->getNumberSwatchesPerProduct())
+        ->setChooseText($chooseText)
+        ->toHtml();
+    ?>
+</div>
+
+<script type="text/x-magento-init">
+    {
+        "[data-role=swatch-option-<?= $block->escapeJs($productId) ?>]": {
+            "Magento_Swatches/js/swatch-renderer": {
+                "selectorProduct": ".product-item-details",
+                "enableControlLabel": false,
+                "jsonConfig": <?= /* @noEscape */ $block->getJsonConfig() ?>,
+                "jsonSwatchConfig": <?= /* @noEscape */ $block->getJsonSwatchConfig() ?>,
+                "mediaCallback": "<?= $block->escapeJs($block->escapeUrl($block->getMediaCallback())) ?>",
+                "showTooltip": <?= $block->escapeJs($configurableViewModel->getShowSwatchTooltip()) ?>,
+                "chooseText": "<?= $block->escapeJs($chooseText) ?>",
+                "classes": {
+                    "attributeClass": "<?= $block->escapeJs($classes['attribute']) ?>",
+                    "attributeSelectedOptionLabelClass":
+                        "<?= $block->escapeJs($classes['attribute_selected_option']) ?>",
+                    "attributeOptionsWrapper": "<?= $block->escapeJs($classes['attribute_options_wrapper']) ?>",
+                    "attributeInput": "<?= $block->escapeJs($classes['attribute_input']) ?>",
+                    "optionClass": "<?= $block->escapeJs($classes['option']) ?>",
+                    "selectClass": "<?= $block->escapeJs($classes['select']) ?>",
+                    "moreButton": "<?= $block->escapeJs($classes['more_button']) ?>"
+                }
+            }
+        }
+    }
+</script>
+
+<script type="text/x-magento-init">
+    {
+        "[data-role=priceBox][data-price-box=product-id-<?= $block->escapeJs($productId) ?>]": {
+            "priceBox": {
+                "priceConfig": {
+                    "priceFormat": <?= /* @noEscape */ $block->getPriceFormatJson(); ?>,
+                    "prices": <?= /* @noEscape */ $block->getPricesJson(); ?>
+                }
+            }
+        }
+    }
+</script>

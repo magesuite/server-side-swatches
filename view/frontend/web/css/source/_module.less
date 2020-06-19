@@ -1,0 +1,55 @@
+@swatch-option__not-rendered__opacity: @button__disabled__opacity;
+
+//
+//  Common
+//  _____________________________________________
+& when (@media-common = true) {
+    .swatch {
+        &-attribute {
+            &-label,
+            &-selected-option {
+                &.visually-hidden {
+                    &:extend(.abs-visually-hidden all);
+                }
+            }
+
+            &-options {
+                &:after {
+                    clear: both;
+                    content: '';
+                    display: block;
+                    height: 0;
+                    visibility: hidden;
+                }
+
+                [class*='swatch-opt'] & {
+                    .lib-css(opacity, @swatch-option__not-rendered__opacity);
+                    cursor: default;
+                    pointer-events: none;
+                }
+
+                [data-rendered='true'] & {
+                    cursor: pointer;
+                    opacity: 1;
+                    pointer-events: auto;
+                }
+            }
+
+            &.image,
+            &.color {
+                background: no-repeat center;
+                background-size: initial;
+            }
+        }
+
+        &-more {
+            ~ .swatch-option {
+                display: none;
+            }
+        }
+
+        &-input {
+            &:extend(.abs-visually-hidden all);
+        }
+    }
+}

@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="category.product.type.details.renderers.configurable" template="MageSuite_ServerSideSwatches::product/listing/renderer.phtml">
+            <arguments>
+                <argument name="classes" xsi:type="array">
+                    <item name="attribute" xsi:type="string">swatch-attribute</item>
+                    <item name="attribute_label" xsi:type="string">swatch-attribute-label</item>
+                    <item name="attribute_selected_option" xsi:type="string">swatch-attribute-selected-option</item>
+                    <item name="attribute_options_wrapper" xsi:type="string">swatch-attribute-options</item>
+                    <item name="attribute_input" xsi:type="string">swatch-input</item>
+                    <item name="more_button" xsi:type="string">swatch-more</item>
+                    <item name="option" xsi:type="string">swatch-option</item>
+                    <item name="select" xsi:type="string">swatch-select</item>
+                </argument>
+                <argument name="in_product_list" xsi:type="string">true</argument>
+                <argument name="choose_text" xsi:type="string" translate="true">Choose an Option...</argument>
+            </arguments>
+            <block name="category.product.type.details.renderers.configurable.attributes" as="swatch_attributes" template="MageSuite_ServerSideSwatches::product/view/renderer/attributes.phtml">
+                <arguments>
+                    <argument name="only_swatches" xsi:type="boolean">true</argument>
+                    <argument name="enable_control_label" xsi:type="boolean">false</argument>
+                    <argument name="more_button_text" xsi:type="string" translate="true">More</argument>
+                    <argument name="more_button_limit" xsi:type="number">-1</argument>
+                </arguments>
+                <block name="category.product.type.details.renderers.configurable.option" as="swatch_option" template="MageSuite_ServerSideSwatches::product/view/renderer/option.phtml"/>
+                <block name="category.product.type.details.renderers.configurable.select" as="swatch_select" template="MageSuite_ServerSideSwatches::product/view/renderer/select.phtml"/>
+            </block>
+        </referenceBlock>
+    </body>
+</page>
