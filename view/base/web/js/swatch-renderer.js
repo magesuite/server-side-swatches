@@ -316,7 +316,7 @@ define([
 
             if (showTooltip === 1) {
                 // Connect Tooltip
-                require(['MageSuite_ServerSideSwatches/js/swatch-renderer-tooltip'], function () {
+                require(['Magento_Swatches/js/swatch-renderer-tooltip'], function () {
                     $container
                         .find('[data-option-type="1"], [data-option-type="2"],' +
                             ' [data-option-type="0"], [data-option-type="3"]')
