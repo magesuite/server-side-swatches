@@ -12,7 +12,8 @@ define([
     'priceUtils',
     'jquery-ui-modules/widget',
     'jquery/jquery.parsequery',
-    'mage/validation/validation'
+    'mage/validation/validation',
+    'MageSuite_ServerSideSwatches/js/swatch-renderer-tooltip'
 ], function ($, _, mageTemplate, keyboardHandler, $t, priceUtils) {
     'use strict';
 
@@ -316,12 +317,10 @@ define([
 
             if (showTooltip === 1) {
                 // Connect Tooltip
-                require(['Magento_Swatches/js/swatch-renderer-tooltip'], function () {
-                    $container
-                        .find('[data-option-type="1"], [data-option-type="2"],' +
-                            ' [data-option-type="0"], [data-option-type="3"]')
-                        .SwatchRendererTooltip();
-                });
+                $container
+                    .find('[data-option-type="1"], [data-option-type="2"],' +
+                        ' [data-option-type="0"], [data-option-type="3"]')
+                    .SwatchRendererTooltip();
             }
 
             // Handle events like click or change.
