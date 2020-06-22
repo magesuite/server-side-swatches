@@ -7,10 +7,9 @@
 <?php
 /** @var \Magento\Swatches\Block\Product\Renderer\Configurable $block */
 /** @var \Magento\Swatches\ViewModel\Product\Renderer\Configurable $configurableViewModel */
-
-$config = $block->getConfig();
-$swatchConfig = $block->getSwatchConfig();
-$sizeConfig = $block->getSwatchSizeConfig();
+$config = json_decode($block->getJsonConfig(), true);
+$swatchConfig = json_decode($block->getJsonSwatchConfig(), true);
+$sizeConfig = json_decode($block->getJsonSwatchSizeConfig(), true);
 $classes = $block->getClasses();
 $chooseText = $block->getChooseText();
 $configurableViewModel = $block->getConfigurableViewModel();
