@@ -422,7 +422,8 @@ define([
                 $label = $parent.find('.' + $widget.options.classes.attributeSelectedOptionLabelClass),
                 attributeId = $parent.data('attribute-id'),
                 $input = $parent.find('.' + $widget.options.classes.attributeInput),
-                checkAdditionalData = JSON.parse(this.options.jsonSwatchConfig[attributeId]['additional_data']),
+                additionalData = this.options.jsonSwatchConfig[attributeId]['additional_data'],
+                checkAdditionalData = (additionalData !== undefined) ? JSON.parse(additionalDataExist ) : '' ,
                 $priceBox = $widget.element.parents($widget.options.selectorProduct)
                     .find(this.options.selectorProductPrice);
 
