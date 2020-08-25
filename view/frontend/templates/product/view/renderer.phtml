@@ -7,12 +7,14 @@
 <?php
 /** @var \Magento\Swatches\Block\Product\Renderer\Configurable $block */
 /** @var \Magento\Swatches\ViewModel\Product\Renderer\Configurable $configurableViewModel */
+$configurableViewModel = $block->getConfigurableViewModel();
+
 $config = json_decode($block->getJsonConfig(), true);
 $swatchConfig = json_decode($block->getJsonSwatchConfig(), true);
 $sizeConfig = json_decode($block->getJsonSwatchSizeConfig(), true);
 $classes = $block->getClasses();
 $chooseText = $block->getChooseText();
-$configurableViewModel = $block->getConfigurableViewModel();
+$getShowTooltip = $configurableViewModel ? $configurableViewModel->getShowSwatchTooltip() : 'true';
 $gallerySwitchingStrategy = $block->getVar('gallery_switch_strategy', 'Magento_ConfigurableProduct');
 ?>
 <div class="swatch-opt" data-role="swatch-options">
@@ -33,7 +35,7 @@ $gallerySwitchingStrategy = $block->getVar('gallery_switch_strategy', 'Magento_C
                 "jsonSwatchConfig": <?= /* @noEscape */ json_encode($swatchConfig) ?>,
                 "mediaCallback": "<?= $block->escapeJs($block->escapeUrl($block->getMediaCallback())) ?>",
                 "gallerySwitchStrategy": "<?= $block->escapeJs($gallerySwitchingStrategy) ?: 'replace' ?>",
-                "showTooltip": <?= $block->escapeJs($configurableViewModel->getShowSwatchTooltip()) ?>,
+                "showTooltip": <?= $block->escapeJs($getShowTooltip) ?>,
                 "chooseText": "<?= $block->escapeJs($chooseText) ?>",
                 "classes": {
                     "attributeClass": "<?= $block->escapeJs($classes['attribute']) ?>",

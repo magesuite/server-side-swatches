@@ -15,6 +15,7 @@ $swatchConfig = json_decode($block->getJsonSwatchConfig(), true);
 $sizeConfig = json_decode($block->getJsonSwatchSizeConfig(), true);
 $chooseText = $block->getChooseText();
 $classes = $block->getClasses();
+$getShowTooltip = $configurableViewModel ? $configurableViewModel->getShowSwatchTooltip() : 'true';
 ?>
 <div class="swatch-opt-<?= $block->escapeHtmlAttr($productId) ?>"
      data-role="swatch-option-<?= $block->escapeHtmlAttr($productId) ?>">
@@ -38,7 +39,7 @@ $classes = $block->getClasses();
                 "jsonConfig": <?= /* @noEscape */ $block->getJsonConfig() ?>,
                 "jsonSwatchConfig": <?= /* @noEscape */ $block->getJsonSwatchConfig() ?>,
                 "mediaCallback": "<?= $block->escapeJs($block->escapeUrl($block->getMediaCallback())) ?>",
-                "showTooltip": <?= $block->escapeJs($configurableViewModel->getShowSwatchTooltip()) ?>,
+                "showTooltip": <?= $block->escapeJs($getShowTooltip) ?>,
                 "chooseText": "<?= $block->escapeJs($chooseText) ?>",
                 "classes": {
                     "attributeClass": "<?= $block->escapeJs($classes['attribute']) ?>",
