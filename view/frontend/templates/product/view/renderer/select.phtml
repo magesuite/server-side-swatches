@@ -16,13 +16,13 @@ $attributeCode = $attribute['code'];
 $attributeLabel = $attribute['label'];
 
 $selectHtml = '<select class="' . $classes['select'] . ' ' . $attributeCode . '">' .
-    '<option value="0" data-option-id="0">' . $chooseText . '</option>';
+    '<option value="0" option-id="0" data-option-id="0">' . $chooseText . '</option>';
 
 foreach ($attribute['options'] as $option) {
     $optionId = $option['id'];
     $optionLabel = $block->escapeHtml($option['label'] ?? '');
 
-    $optionAttributes = ' value="' . $optionId . '" data-option-id="' . $optionId . '"';
+    $optionAttributes = ' value="' . $optionId . '" option-id="' . $optionId . '"' . '" data-option-id="' . $optionId . '"';
 
     if (empty($option['products'])) {
         $optionAttributes .= ' data-option-empty="true"';
