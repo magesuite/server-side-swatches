@@ -423,7 +423,7 @@ define([
                 attributeId = $parent.data('attribute-id'),
                 $input = $parent.find('.' + $widget.options.classes.attributeInput),
                 additionalData = this.options.jsonSwatchConfig[attributeId]['additional_data'],
-                checkAdditionalData = (additionalData !== undefined) ? JSON.parse(additionalDataExist ) : '' ,
+                checkAdditionalData = (additionalData !== undefined) ? JSON.parse(additionalData) : '' ,
                 $priceBox = $widget.element.parents($widget.options.selectorProduct)
                     .find(this.options.selectorProductPrice);
 
