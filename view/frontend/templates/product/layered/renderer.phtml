@@ -26,10 +26,15 @@
                             ?>
                             <div class="swatch-option <?= $block->escapeHtmlAttr($label['custom_style']) ?>"
                                 tabindex="-1"
+                                option-type="3"
                                 data-option-type="3"
+                                option-id="<?= $block->escapeHtmlAttr($option) ?>"
                                 data-option-id="<?= $block->escapeHtmlAttr($option) ?>"
+                                option-label="<?= $block->escapeHtmlAttr($label['label']) ?>"
                                 data-option-label="<?= $block->escapeHtmlAttr($label['label']) ?>"
+                                option-tooltip-thumb=""
                                 data-option-tooltip-thumb=""
+                                option-tooltip-value=""
                                 data-option-tooltip-value="">
                             </div>
                             <?php break;
@@ -47,10 +52,15 @@
                             ?>
                             <div class="swatch-option image <?= $block->escapeHtmlAttr($label['custom_style']) ?>"
                                 tabindex="-1"
+                                option-type="2"
                                 data-option-type="2"
+                                option-id="<?= $block->escapeHtmlAttr($option) ?>"
                                 data-option-id="<?= $block->escapeHtmlAttr($option) ?>"
+                                option-label="<?= $block->escapeHtmlAttr($label['label']) ?>"
                                 data-option-label="<?= $block->escapeHtmlAttr($label['label']) ?>"
+                                option-tooltip-thumb="<?= $block->escapeUrl($swatchThumbPath) ?>"
                                 data-option-tooltip-thumb="<?= $block->escapeUrl($swatchThumbPath) ?>"
+                                option-tooltip-value=""
                                 data-option-tooltip-value=""
                                 style="background-image: url(<?= /*  @noEscape */ $escapedUrl ?>)">
                             </div>
@@ -59,13 +69,16 @@
                             ?>
                             <div class="swatch-option color <?= $block->escapeHtmlAttr($label['custom_style']) ?>"
                                 tabindex="-1"
+                                option-type="1"
                                 data-option-type="1"
+                                option-id="<?= $block->escapeHtmlAttr($option) ?>"
                                 data-option-id="<?= $block->escapeHtmlAttr($option) ?>"
+                                option-label="<?= $block->escapeHtmlAttr($label['label']) ?>"
                                 data-option-label="<?= $block->escapeHtmlAttr($label['label']) ?>"
+                                option-tooltip-thumb=""
                                 data-option-tooltip-thumb=""
-                                data-option-tooltip-value="<?= $block->escapeHtmlAttr(
-                                    $swatchOption['value']
-                                ) ?>"
+                                option-tooltip-value="<?= $block->escapeHtmlAttr($swatchOption['value']) ?>"
+                                data-option-tooltip-value="<?= $block->escapeHtmlAttr($swatchOption['value']) ?>"
                                 style="background-color: <?= $block->escapeHtmlAttr($swatchOption['value']) ?>;">
                             </div>
                             <?php break;
@@ -74,10 +87,15 @@
                             ?>
                             <div class="swatch-option text <?= $block->escapeHtmlAttr($label['custom_style']) ?>"
                                 tabindex="-1"
+                                option-type="0"
                                 data-option-type="0"
+                                option-id="<?= $block->escapeHtmlAttr($option) ?>"
                                 data-option-id="<?= $block->escapeHtmlAttr($option) ?>"
+                                option-label="<?= $block->escapeHtmlAttr($label['label']) ?>"
                                 data-option-label="<?= $block->escapeHtmlAttr($label['label']) ?>"
+                                option-tooltip-thumb=""
                                 data-option-tooltip-thumb=""
+                                option-tooltip-value=""
                                 data-option-tooltip-value=""
                             >
                                 <?= $block->escapeHtml($swatchOption['value']) ?>

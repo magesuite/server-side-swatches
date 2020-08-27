@@ -30,12 +30,17 @@ $optionAttributes = 'id="' . $attributeLabelId . '-item-' . $optionId . '"' .
     ' aria-checked="false"' .
     ' aria-describedby="' . $attributeLabelId . '"' .
     ' tabindex="0"' .
+    ' option-type="' . $optionType . '"' .
     ' data-option-type="' . $optionType . '"' .
+    ' option-id="' . $optionId . '"' .
     ' data-option-id="' . $optionId . '"' .
+    ' option-label="' . $optionLabel . '"' .
     ' data-option-label="' . $optionLabel . '"' .
     ' aria-label="' . $optionLabel . '"' .
     ' role="option"' .
+    ' thumb-width="' . $optionWidth . '"' .
     ' data-thumb-width="' . $optionWidth . '"' .
+    ' thumb-height="' . $optionHeight . '"' .
     ' data-thumb-height="' . $optionHeight . '"';
 
 $optionThumb = $optionConfig['thumb'] ?? '';
