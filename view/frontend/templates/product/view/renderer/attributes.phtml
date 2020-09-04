@@ -87,10 +87,9 @@ $classes = $block->getClasses();
         <input
             class="<?= $block->escapeHtml($classes['attribute_input']) ?> super-attribute-select"
             name="super_attribute[<?= $block->escapeHtml($attributeId) ?>]"
-            type="hidden"
             value=""
             data-selector="super_attribute[<?= $block->escapeHtml($attributeId) ?>]"
-            data-validate="{required: true}"
+            data-validate="{required: true, messages: {required: '<?= __('Please select %1', $block->escapeHtml($attributeLabel)) ?>'}}"
             aria-required="true"
             aria-invalid="false"
         >
