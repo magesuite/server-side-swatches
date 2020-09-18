@@ -15,7 +15,7 @@ $swatchConfig = json_decode($block->getJsonSwatchConfig(), true);
 $sizeConfig = json_decode($block->getJsonSwatchSizeConfig(), true);
 $chooseText = $block->getChooseText();
 $classes = $block->getClasses();
-$getShowTooltip = $configurableViewModel ? $configurableViewModel->getShowSwatchTooltip() : 'true';
+$getShowTooltip = $configurableViewModel ? $configurableViewModel->getShowSwatchTooltip() : 1;
 ?>
 <div class="swatch-opt-<?= $block->escapeHtmlAttr($productId) ?>"
      data-role="swatch-option-<?= $block->escapeHtmlAttr($productId) ?>">
