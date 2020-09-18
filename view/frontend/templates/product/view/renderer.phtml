@@ -14,7 +14,7 @@ $swatchConfig = json_decode($block->getJsonSwatchConfig(), true);
 $sizeConfig = json_decode($block->getJsonSwatchSizeConfig(), true);
 $classes = $block->getClasses();
 $chooseText = $block->getChooseText();
-$getShowTooltip = $configurableViewModel ? $configurableViewModel->getShowSwatchTooltip() : 'true';
+$getShowTooltip = $configurableViewModel ? $configurableViewModel->getShowSwatchTooltip() : 1;
 $gallerySwitchingStrategy = $block->getVar('gallery_switch_strategy', 'Magento_ConfigurableProduct');
 ?>
 <div class="swatch-opt" data-role="swatch-options">
