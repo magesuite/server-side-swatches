@@ -14,9 +14,10 @@
      data-attribute-code="<?= $block->escapeHtmlAttr($swatchData['attribute_code']) ?>"
      data-attribute-id="<?= $block->escapeHtmlAttr($swatchData['attribute_id']) ?>">
     <div class="swatch-attribute-options clearfix">
-        <?php foreach ($swatchData['options'] as $option => $label):
-            $swatchOption = $swatchData['swatches'][$option];
-        ?>
+        <?php foreach ($swatchData['options'] as $option => $label):?>
+            <?php if (!empty($option)):
+                $swatchOption = $swatchData['swatches'][$option];
+            ?>
             <a href="<?= $block->escapeUrl($label['link']) ?>" rel="nofollow"
                aria-label="<?= $block->escapeHtmlAttr($label['label']) ?>"
                class="swatch-option-link-layered">
@@ -104,6 +105,7 @@
                     } ?>
                 <?php endif; ?>
             </a>
+            <?php endif; ?>
         <?php endforeach; ?>
     </div>
 </div>
