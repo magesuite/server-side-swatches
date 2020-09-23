@@ -17,9 +17,11 @@ $optionId = $option['id'];
 $optionType = (int)$optionConfig['type'];
 $optionIndex = $block->getIndex();
 $optionLabel = $block->escapeHtml($optionConfig['label'] ?? '');
+$sizeConfig = $block->getSizeConfig();
 
 $optionWidth = 110;
 $optionHeight = 90;
+
 if (isset($sizeConfig['swatchThumb'])) {
     $optionWidth = $sizeConfig['swatchThumb']['width'];
     $optionHeight = $sizeConfig['swatchThumb']['height'];

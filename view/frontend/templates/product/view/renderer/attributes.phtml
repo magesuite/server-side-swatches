@@ -9,7 +9,7 @@
 
 $config = $block->getConfig();
 $swatchConfig = $block->getSwatchConfig();
-$sizeConfig = $block->getSwatchSizeConfig();
+$sizeConfig = $block->getSizeConfig();
 $classes = $block->getClasses();
 ?>
 
@@ -52,6 +52,7 @@ $classes = $block->getClasses();
 
             $swatchOption = $block
                 ->getChildBlock('swatch_option')
+                ->setSizeConfig($sizeConfig)
                 ->setAttributeLabelId($attributeLabelId)
                 ->setClasses($classes);
 
