@@ -1,7 +1,6 @@
 <?php
 /**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
+ * attribute-code and attribute-id attributes are fallback for Magento versions prior to 2.4
  */
 ?>
 <?php
@@ -30,6 +29,8 @@ $classes = $block->getClasses();
         class="<?= $block->escapeHtml($classes['attribute'] . ' ' . $attributeCode) ?>"
         data-attribute-code="<?= $block->escapeHtml($attributeCode) ?>"
         data-attribute-id="<?= $block->escapeHtml($attributeId) ?>"
+        attribute-code="<?= $block->escapeHtml($attributeCode) ?>"
+        attribute-id="<?= $block->escapeHtml($attributeId) ?>"
     >
         <span
             id="<?= $block->escapeHtml($attributeLabelId) ?>"
