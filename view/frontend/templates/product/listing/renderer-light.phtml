@@ -1,0 +1,32 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+<?php
+/** @var \Magento\Swatches\Block\Product\Renderer\Listing\Configurable $block */
+$productId = $block->getProduct()->getId();
+/** @var \Magento\Swatches\ViewModel\Product\Renderer\Configurable $configurableViewModel */
+$configurableViewModel = $block->getConfigurableViewModel();
+
+$config = json_decode($block->getJsonConfig(), true);
+$swatchConfig = json_decode($block->getJsonSwatchConfig(), true);
+$sizeConfig = json_decode($block->getJsonSwatchSizeConfig(), true);
+$chooseText = $block->getChooseText();
+$classes = $block->getClasses();
+$getShowTooltip = $configurableViewModel ? $configurableViewModel->getShowSwatchTooltip() : 1;
+?>
+<div class="swatch-opt-<?= $block->escapeHtmlAttr($productId) ?> swatch-opt--light"
+     data-role="swatch-option-<?= $block->escapeHtmlAttr($productId) ?>">
+    <?= $block->getChildBlock('swatch_attributes')
+        ->setConfig($config)
+        ->setSwatchConfig($swatchConfig)
+        ->setSizeConfig($sizeConfig)
+        ->setClasses($classes)
+        ->setMoreButtonLimit($block->getNumberSwatchesPerProduct())
+        ->setChooseText($chooseText)
+        ->toHtml();
+    ?>
+</div>
+
