@@ -1,0 +1,67 @@
+<?php
+/**
+ * Light version of swatch option. No scripts, not necessary html removed, just for presentational purpose
+ */
+?>
+<?php
+/** @var \Magento\Framework\View\Element\Template $block */
+
+$option = $block->getOption();
+$optionConfig = $block->getOptionConfig();
+$attributeLabelId = $block->getAttributeLabelId();
+$classes = $block->getClasses();
+
+$optionHtml = '';
+$optionId = $option['id'];
+$optionType = (int)$optionConfig['type'];
+$optionIndex = $block->getIndex();
+$optionLabel = $block->escapeHtml($optionConfig['label'] ?? '');
+$sizeConfig = $block->getSizeConfig();
+
+$optionWidth = 110;
+$optionHeight = 90;
+
+if (isset($sizeConfig['swatchThumb'])) {
+    $optionWidth = $sizeConfig['swatchThumb']['width'];
+    $optionHeight = $sizeConfig['swatchThumb']['height'];
+}
+
+$optionAttributes = ' aria-label="' . $optionLabel . '"' . ' role="option"';
+
+$optionValue = $block->escapeHtml($optionConfig['value'] ?? '');
+
+if (empty($option['products'])) {
+    $optionAttributes .= ' data-option-empty="true"';
+}
+
+$optionHtml = '<div data-option-id="' . $optionId . '" class="' . $classes['option'];
+switch ($optionType) {
+    case 0:
+        // Text
+        $optionHtml .= ' text" ' . $optionAttributes . '>' . ($optionValue ?: $optionLabel);
+        break;
+    case 1:
+        // Color
+        $optionHtml .= ' color" ' . $optionAttributes . ' style="background-color: ' . $optionValue . ';">';
+        break;
+    case 2:
+        // Image
+        $optionSwatchImageWidth = 30;
+        $optionSwatchImageHeight = 20;
+        if (isset($sizeConfig['swatchImage'])) {
+            $optionSwatchImageWidth = $sizeConfig['swatchImage']['width'];
+            $optionSwatchImageHeight = $sizeConfig['swatchImage']['height'];
+        }
+        $optionHtml .= ' image" ' . $optionAttributes . ' style="background-image: url(' . $optionValue . ');"' .
+            ' width="' . $optionSwatchImageWidth . '" height="' . $optionSwatchImageHeight . '">';
+        break;
+    case 3:
+        // Clear
+        $optionHtml .= '" ' . $optionAttributes . '>';
+        break;
+    default:
+        $optionHtml .= '" ' . $optionAttributes . '>' . $optionLabel;
+        break;
+}
+/* @noEscape */ echo $optionHtml . '</div>';
+?>

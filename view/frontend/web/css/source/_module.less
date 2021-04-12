@@ -28,7 +28,8 @@
                     pointer-events: none;
                 }
 
-                [data-rendered='true'] & {
+                [data-rendered='true'] &,
+                .swatch-opt--light & {
                     cursor: pointer;
                     opacity: 1;
                     pointer-events: auto;
@@ -39,6 +40,10 @@
             &.color {
                 background: no-repeat center;
                 background-size: initial;
+            }
+
+            &[data-option-empty='true'] {
+                opacity: @button__disabled__opacity;
             }
         }
 

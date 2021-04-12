@@ -1,0 +1,74 @@
+<?php
+/**
+ * Light version of swatch attributes list. No scripts, not necessary html removed, just for presentational purpose
+ */
+?>
+<?php
+/** @var \Magento\Framework\View\Element\Template $block*/
+
+$config = $block->getConfig();
+$swatchConfig = $block->getSwatchConfig();
+$sizeConfig = $block->getSizeConfig();
+$classes = $block->getClasses();
+?>
+
+<?php foreach ($config['attributes'] as $attributeId => $attribute): ?>
+    <?php
+    $attributeCode = $attribute['code'];
+    $attributeLabel = $attribute['label'];
+    $attributeLabelId = "option-label-$attributeCode-$attributeId";
+    $attributeLabelClass = $classes['attribute_label'];
+
+    if (!$block->getEnableControlLabel()) {
+        $attributeLabelClass .= ' visually-hidden';
+    }
+    ?>
+    <div
+        class="<?= $block->escapeHtml($classes['attribute'] . ' ' . $attributeCode) ?>"
+        data-attribute-code="<?= $block->escapeHtml($attributeCode) ?>"
+        data-attribute-id="<?= $block->escapeHtml($attributeId) ?>"
+    >
+        <span class="<?= $block->escapeHtml($attributeLabelClass) ?>"><?= $block->escapeHtml($attributeLabel) ?></span>
+        <div class="<?= $block->escapeHtml($classes['attribute_options_wrapper']) ?>">
+        <?php
+        if (isset($swatchConfig[$attributeId])) {
+            $attributeConfig = $swatchConfig[$attributeId];
+            $displayedOptions = 0;
+
+            $swatchOption = $block
+                ->getChildBlock('swatch_option')
+                ->setSizeConfig($sizeConfig)
+                ->setAttributeLabelId($attributeLabelId)
+                ->setClasses($classes);
+
+            foreach ($attribute['options'] as $optionIndex => $option) {
+                $optionId = $option['id'];
+                $optionConfig = $attributeConfig[$optionId] ?? null;
+
+                if ($block->getOnlySwatches() && !$optionConfig) {
+                    continue;
+                }
+
+                if ($block->getMoreButtonLimit() === $displayedOptions++) {
+                    $moreButtonClass = $classes['more_button'];
+                    $moreButtonText = $block->getMoreButtonText();
+                    echo '<a href="#" class="' . $block->escapeHtml($moreButtonClass) .'"><span>' .
+                        $block->escapeHtml($moreButtonText) . '</span></a>';
+                }
+
+                echo $swatchOption->setOption($option)
+                    ->setOptionConfig($optionConfig)
+                    ->setIndex($optionIndex)
+                    ->toHtml();
+            }
+        } else {
+            echo $block->getChildBlock('swatch_select')
+                ->setData('attribute', $attribute)
+                ->setChooseText($block->getChooseText())
+                ->setClasses($classes)
+                ->toHtml();
+        }
+        ?>
+        </div>
+    </div>
+<?php endforeach; ?>

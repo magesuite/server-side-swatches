@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
+        <!-- To use light swatches version (no javascript, reduced html, just for presentational purpose) change the emplate name to renderer-light.phtml -->
         <referenceBlock name="product.tile.details.renderers.configurable" template="MageSuite_ServerSideSwatches::product/listing/renderer.phtml">
             <arguments>
                 <argument name="classes" xsi:type="array">
@@ -16,6 +17,7 @@
                 <argument name="in_product_list" xsi:type="string">true</argument>
                 <argument name="choose_text" xsi:type="string" translate="true">Choose an Option...</argument>
             </arguments>
+            <!-- To use light swatches version (no javascript, reduced html, just for presentational purpose) change the emplate name to attributes-light.phtml -->
             <block name="product.tile.details.renderers.configurable.attributes" as="swatch_attributes" template="MageSuite_ServerSideSwatches::product/view/renderer/attributes.phtml">
                 <arguments>
                     <argument name="only_swatches" xsi:type="boolean">true</argument>
@@ -23,6 +25,7 @@
                     <argument name="more_button_text" xsi:type="string" translate="true">More</argument>
                     <argument name="more_button_limit" xsi:type="number">-1</argument>
                 </arguments>
+                <!-- To use light swatches version (no javascript, reduced html, just for presentational purpose) change the emplate name to option-light.phtml -->
                 <block name="product.tile.details.renderers.configurable.option" as="swatch_option" template="MageSuite_ServerSideSwatches::product/view/renderer/option.phtml"/>
                 <block name="product.tile.details.renderers.configurable.select" as="swatch_select" template="MageSuite_ServerSideSwatches::product/view/renderer/select.phtml"/>
             </block>
