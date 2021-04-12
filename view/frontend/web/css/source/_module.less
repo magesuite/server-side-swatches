@@ -41,9 +41,13 @@
                 background: no-repeat center;
                 background-size: initial;
             }
+        }
 
+        &-option {
             &[data-option-empty='true'] {
-                opacity: @button__disabled__opacity;
+                .swatch-opt--light & {
+                    opacity: @button__disabled__opacity;
+                }
             }
         }
 
