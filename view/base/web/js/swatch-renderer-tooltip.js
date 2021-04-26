@@ -109,9 +109,13 @@ define([
                             $corner.css({
                                 left: leftCorner
                             });
+
+                            var $body = $('body');
+                            var offcanvasScroll = $body.hasClass('offcanvas-filters-open') ? parseInt($body.css('top')) : 0;
+
                             $element.css({
                                 left: left,
-                                top: $this.offset().top - $element.height() - $corner.height() - 18
+                                top: $this.offset().top - $element.height() - $corner.height() - 18 - offcanvasScroll
                             }).show();
                         },
                         $widget.options.delay
