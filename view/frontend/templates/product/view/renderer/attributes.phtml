@@ -61,7 +61,11 @@ $classes = $block->getClasses();
                 $optionId = $option['id'];
                 $optionConfig = $attributeConfig[$optionId] ?? null;
 
-                if ($block->getOnlySwatches() && !$optionConfig) {
+                if (!$optionConfig) {
+                    continue;
+                }
+
+                if ($block->getOnlySwatches()) {
                     continue;
                 }
 
