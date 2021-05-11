@@ -44,8 +44,12 @@ $classes = $block->getClasses();
             foreach ($attribute['options'] as $optionIndex => $option) {
                 $optionId = $option['id'];
                 $optionConfig = $attributeConfig[$optionId] ?? null;
+                
+                if (!$optionConfig) {
+                    continue;
+                }
 
-                if ($block->getOnlySwatches() && !$optionConfig) {
+                if ($block->getOnlySwatches()) {
                     continue;
                 }
 
