@@ -24,6 +24,7 @@
             </arguments>
             <block name="category.product.type.details.renderers.configurable.attributes" as="swatch_attributes" template="MageSuite_ServerSideSwatches::product/view/renderer/attributes.phtml">
                 <arguments>
+                    <!-- Show only visual swatches, do not render seletcs -->
                     <argument name="only_swatches" xsi:type="boolean">true</argument>
                     <argument name="enable_control_label" xsi:type="boolean">false</argument>
                     <argument name="more_button_text" xsi:type="string" translate="true">More</argument>

@@ -24,6 +24,7 @@
             </arguments>
             <block name="product.info.options.swatches.attributes" as="swatch_attributes" template="MageSuite_ServerSideSwatches::product/view/renderer/attributes.phtml">
                 <arguments>
+                    <!-- Show all kind of options (also selects), not only visual selects -->
                     <argument name="only_swatches" xsi:type="boolean">false</argument>
                     <argument name="enable_control_label" xsi:type="boolean">true</argument>
                     <argument name="more_button_text" xsi:type="string" translate="true">More</argument>
