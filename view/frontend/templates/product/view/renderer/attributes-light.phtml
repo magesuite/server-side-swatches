@@ -49,10 +49,6 @@ $classes = $block->getClasses();
                     continue;
                 }
 
-                if ($block->getOnlySwatches()) {
-                    continue;
-                }
-
                 if ($block->getMoreButtonLimit() === $displayedOptions++) {
                     $moreButtonClass = $classes['more_button'];
                     $moreButtonText = $block->getMoreButtonText();
@@ -66,11 +62,13 @@ $classes = $block->getClasses();
                     ->toHtml();
             }
         } else {
-            echo $block->getChildBlock('swatch_select')
+            if (!$block->getOnlySwatches()) {
+                echo $block->getChildBlock('swatch_select')
                 ->setData('attribute', $attribute)
                 ->setChooseText($block->getChooseText())
                 ->setClasses($classes)
                 ->toHtml();
+            }
         }
         ?>
         </div>
