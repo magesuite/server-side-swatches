@@ -656,7 +656,7 @@ define([
         _UpdatePrice: function () {
             var $widget = this,
                 $product = $widget.element.parents($widget.options.selectorProduct),
-                $productPrice = $product.find(this.options.selectorProductPrice),
+                $productPrice = $product.find(`.product-info-price ${this.options.selectorProductPrice}`),
                 result = $widget._getNewPrices(),
                 tierPriceHtml,
                 isShow;
