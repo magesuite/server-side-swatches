@@ -94,7 +94,8 @@ $classes = $block->getClasses();
             value=""
             type="text"
             data-selector="super_attribute[<?= $block->escapeHtml($attributeId) ?>]"
-            data-validate="{required: true, messages: {required: '<?= __('Please select %1', $block->escapeHtml($attributeLabel)) ?>'}}"
+            data-validate="{required: true}"
+            data-msg-required="<?= __('Please select %1', $block->escapeHtml($attributeLabel)) ?>"
             aria-required="true"
             aria-invalid="false"
         >
