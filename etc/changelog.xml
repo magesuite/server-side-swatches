@@ -1,0 +1,13 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:MageSuite_Changelog:etc/changelog.xsd">
+    <module id="MageSuite_ServerSideSwatches" name="MageSuite_ServerSideSwatches">
+        <changelog>
+            <tag version="1.2.0" date="2022-08-01">
+                <entry>
+                    <type>FEATURE</type>
+                    <overview>Add missing information about attribute for swatch-option</overview>
+                    <ticket_id>LP-958</ticket_id>
+                </entry>
+            </tag>
+        </changelog>
+    </module>
+</config>

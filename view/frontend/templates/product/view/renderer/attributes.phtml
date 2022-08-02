@@ -54,6 +54,7 @@ $classes = $block->getClasses();
             $swatchOption = $block
                 ->getChildBlock('swatch_option')
                 ->setSizeConfig($sizeConfig)
+                ->setData('attribute', $attribute)
                 ->setAttributeLabelId($attributeLabelId)
                 ->setClasses($classes);
 
