@@ -334,27 +334,6 @@ define([
             $widget._EmulateSelected($widget._getSelectedAttributes());
         },
 
-        disableSwatchForOutOfStockProducts: function () {
-            let $widget = this, container = this.element;
-
-            $.each(this.options.jsonConfig.attributes, function () {
-                let item = this;
-
-                if ($widget.options.jsonConfig.canDisplayShowOutOfStockStatus) {
-                    let salableProducts = $widget.options.jsonConfig.salable[item.id],
-                        swatchOptions = container.find('.swatch-option');
-
-                    swatchOptions.each(function (key, value) {
-                        let optionId = $(value).data('option-id');
-
-                        if (!salableProducts.hasOwnProperty(optionId)) {
-                            $(value).attr('disabled', true).addClass('disabled');
-                        }
-                    });
-                }
-            });
-        },
-
         /**
          * Event listener
          *
@@ -588,8 +567,6 @@ define([
                 .attr('disabled', true)
                 .addClass('disabled')
                 .attr('tabindex', '-1');
-
-            this.disableSwatchForOutOfStockProducts();
         },
 
         /**
