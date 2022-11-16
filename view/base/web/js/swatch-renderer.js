@@ -28,6 +28,7 @@ define([
          * @param {Object} validation
          */
         listenFormValidateHandler: function (event, validation) {
+            console.log(event, validation);
             var swatchWrapper, firstActive, swatches, swatch, successList, errorList, firstSwatch;
 
             this._superApply(arguments);
@@ -188,11 +189,7 @@ define([
                     return;
                 }
 
-                if (products.length === 0) {
-                    products = $widget.options.jsonConfig.salable[id][option];
-                } else {
-                    products = _.intersection(products, $widget.options.jsonConfig.salable[id][option]);
-                }
+                products = [...products, ...$widget.options.jsonConfig.salable[id][option]];
             });
             return products;
         },
@@ -625,6 +622,7 @@ define([
                     id = $this.data('attribute-id'),
                     products = $widget._CalcProducts(id);
 
+                    debugger;
                 // Compability with Magento 2.4.5
                 if ($widget.options.jsonConfig.salable) {
                     products = $widget._GetSalableSelectedProducts(id);
@@ -652,10 +650,11 @@ define([
         },
 
         /**
-         * disable options that do not have any salable product assign
+         * Disable options that do not have any salable product assign
          */
         disableSwatchForOutOfStockProducts: function () {
             let $widget = this, container = this.element;
+            debugger;
 
             if ($widget.options.jsonConfig.canDisplayShowOutOfStockStatus && $widget.options.jsonConfig.salable) {
                 let salableProducts = {};
