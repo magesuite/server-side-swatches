@@ -12,7 +12,7 @@ $sizeConfig = $block->getSizeConfig();
 $classes = $block->getClasses();
 ?>
 
-<?php foreach ($config['attributes'] as $attributeId => $attribute): ?>
+<?php foreach ($config['attributes'] as $attributeId => $attribute) :?>
     <?php
     $attributeCode = $attribute['code'];
     $attributeLabel = $attribute['label'];
@@ -96,7 +96,7 @@ $classes = $block->getClasses();
             type="text"
             data-selector="super_attribute[<?= $block->escapeHtml($attributeId) ?>]"
             data-validate="{required: true}"
-            data-msg-required="<?= __('Please select %1', $block->escapeHtml($attributeLabel)) ?>"
+            data-msg-required="<?= $block->escapeHtml(__('Please select %1', $attributeLabel)) ?>"
             aria-required="true"
             aria-invalid="false"
         >

@@ -28,7 +28,6 @@ define([
          * @param {Object} validation
          */
         listenFormValidateHandler: function (event, validation) {
-            console.log(event, validation);
             var swatchWrapper, firstActive, swatches, swatch, successList, errorList, firstSwatch;
 
             this._superApply(arguments);
@@ -622,7 +621,6 @@ define([
                     id = $this.data('attribute-id'),
                     products = $widget._CalcProducts(id);
 
-                    debugger;
                 // Compability with Magento 2.4.5
                 if ($widget.options.jsonConfig.salable) {
                     products = $widget._GetSalableSelectedProducts(id);
@@ -653,20 +651,20 @@ define([
          * Disable options that do not have any salable product assign
          */
         disableSwatchForOutOfStockProducts: function () {
-            let $widget = this, container = this.element;
-            debugger;
+            const $widget = this;
+            const container = this.element;
 
             if ($widget.options.jsonConfig.canDisplayShowOutOfStockStatus && $widget.options.jsonConfig.salable) {
                 let salableProducts = {};
-                let swatchOptions = container.find('.swatch-option');
+                const swatchOptions = container.find('.swatch-option');
 
                 $.each(this.options.jsonConfig.attributes, function () {
-                    let item = this;
+                    const item = this;
                     salableProducts = {...salableProducts, ...$widget.options.jsonConfig.salable[item.id]};
                 });
 
                 swatchOptions.each(function (key, value) {
-                    let optionId = $(value).data('option-id');
+                    const optionId = $(value).data('option-id');
                     if (!salableProducts.hasOwnProperty(optionId)) {
                         $(value).attr('disabled', true).addClass('disabled');
                     }
