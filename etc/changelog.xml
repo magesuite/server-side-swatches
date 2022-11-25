@@ -8,6 +8,13 @@
                     <ticket_id>LP-958</ticket_id>
                 </entry>
             </tag>
+            <tag version="1.4.0" date="2022-11-16">
+                <entry>
+                    <type>FIX</type>
+                    <overview>Handle out-of-stock swatches after update to Magento 2.4.5</overview>
+                    <ticket_id>MGS-4747</ticket_id>
+                </entry>
+            </tag>
         </changelog>
     </module>
 </config>
