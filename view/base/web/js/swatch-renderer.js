@@ -143,6 +143,9 @@ define([
             // whether swatches are rendered in product list or on product page
             inProductList: false,
 
+            // whether swatches are rendered in review form
+            inReviewForm: false,
+
             // sly-old-price block selector
             slyOldPriceSelector: '.sly-old-price',
 
@@ -213,6 +216,8 @@ define([
                 return;
             }
             $(this.element).attr('data-rendered', true);
+
+            this.inReviewForm = !!this.element.parents('#review-form').length;
 
             if (_.isEmpty(this.options.jsonConfig.images)) {
                 this.options.useAjax = true;
@@ -588,6 +593,10 @@ define([
          * @private
          */
         _Rewind: function (controls) {
+            if (this.inReviewForm) {
+                return;
+            }
+
             controls.find('div[data-option-id], option[data-option-id]').removeClass('disabled').removeAttr('disabled');
             controls.find('div[data-option-empty], option[data-option-empty]')
                 .attr('disabled', true)
