@@ -178,6 +178,33 @@ define([
             return _.isArray(products) && products.length === 1 ? products[0] : null;
         },
 
+
+        /**
+         * Get selected salable product list
+         * Compatible with Magento 2.4.5, base on $widget.options.jsonConfig.salable data
+         *
+         * @returns {Array}
+         * @private
+         */
+         _getSalableSelectedProducts: function () {
+            var $widget = this,
+                selectedOptions = '.' + $widget.options.classes.attributeClass + '[data-option-selected]',
+                products = [];
+
+            // Generate intersection of products
+            $widget.element.find(selectedOptions).each(function () {
+                var id = $(this).data('attribute-id'),
+                    option = $(this).attr('data-option-selected');
+
+                if (!$widget.options.jsonConfig.salable[id] || !$widget.options.jsonConfig.salable[id][option]) {
+                    return;
+                }
+
+                products = [...products, ...$widget.options.jsonConfig.salable[id][option]];
+            });
+            return products;
+        },
+
         /**
          * @private
          */
@@ -591,9 +618,18 @@ define([
 
             // Disable not available options
             controls.each(function () {
-                var $this = $(this),
-                    id = $this.data('attribute-id'),
+                var $this = $(this);
+                var id = $this.data('attribute-id');
+                var products = [];
+
+                // Products under salable key are present in Magento >= 2.4.4
+                // salable products are added only if Catalog -> Inventory -> Stock Options -> Display Out of Stock Products is set to Yes
+                // When out of stock products are not diaplayed in shop there is an empty object under salable key and method _CalcProduct is used to get salable products
+                if ($widget.options.jsonConfig.salable && Object.keys($widget.options.jsonConfig.salable).length) {
+                    products = $widget._getSalableSelectedProducts(id);
+                } else {
                     products = $widget._CalcProducts(id);
+                }
 
                 if (selected.length === 1 && selected.first().data('attribute-id') === id) {
                     return;
