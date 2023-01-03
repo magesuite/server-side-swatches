@@ -166,7 +166,6 @@ define([
 
             return _.isArray(products) ? products[0] : null;
         },
-        
         /**
          * Get selected salable product list
          * Compatible with Magento 2.4.5, base on $widget.options.jsonConfig.salable data
@@ -174,7 +173,7 @@ define([
          * @returns {Array}
          * @private
          */
-         _GetSalableSelectedProducts: function () {
+        _GetSalableSelectedProducts: function () {
             var $widget = this,
                 selectedOptions = '.' + $widget.options.classes.attributeClass + '[data-option-selected]',
                 products = [];
