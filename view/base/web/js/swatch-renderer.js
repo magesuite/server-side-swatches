@@ -166,6 +166,32 @@ define([
 
             return _.isArray(products) ? products[0] : null;
         },
+        
+        /**
+         * Get selected salable product list
+         * Compatible with Magento 2.4.5, base on $widget.options.jsonConfig.salable data
+         *
+         * @returns {Array}
+         * @private
+         */
+                 _getSalableSelectedProducts: function () {
+                    var $widget = this,
+                        selectedOptions = '.' + $widget.options.classes.attributeClass + '[data-option-selected]',
+                        products = [];
+        
+                    // Generate intersection of products
+                    $widget.element.find(selectedOptions).each(function () {
+                        var id = $(this).data('attribute-id'),
+                            option = $(this).attr('data-option-selected');
+        
+                        if (!$widget.options.jsonConfig.salable[id] || !$widget.options.jsonConfig.salable[id][option]) {
+                            return;
+                        }
+        
+                        products = [...products, ...$widget.options.jsonConfig.salable[id][option]];
+                    });
+                    return products;
+                },
 
         /**
          * Get chosen product id
@@ -176,33 +202,6 @@ define([
             var products = this._CalcProducts();
 
             return _.isArray(products) && products.length === 1 ? products[0] : null;
-        },
-
-
-        /**
-         * Get selected salable product list
-         * Compatible with Magento 2.4.5, base on $widget.options.jsonConfig.salable data
-         *
-         * @returns {Array}
-         * @private
-         */
-         _getSalableSelectedProducts: function () {
-            var $widget = this,
-                selectedOptions = '.' + $widget.options.classes.attributeClass + '[data-option-selected]',
-                products = [];
-
-            // Generate intersection of products
-            $widget.element.find(selectedOptions).each(function () {
-                var id = $(this).data('attribute-id'),
-                    option = $(this).attr('data-option-selected');
-
-                if (!$widget.options.jsonConfig.salable[id] || !$widget.options.jsonConfig.salable[id][option]) {
-                    return;
-                }
-
-                products = [...products, ...$widget.options.jsonConfig.salable[id][option]];
-            });
-            return products;
         },
 
         /**
