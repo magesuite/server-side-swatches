@@ -174,24 +174,24 @@ define([
          * @returns {Array}
          * @private
          */
-        _getSalableSelectedProducts: function () {
-        var $widget = this,
-            selectedOptions = '.' + $widget.options.classes.attributeClass + '[data-option-selected]',
-            products = [];
+         _GetSalableSelectedProducts: function () {
+            var $widget = this,
+                selectedOptions = '.' + $widget.options.classes.attributeClass + '[data-option-selected]',
+                products = [];
 
-        // Generate intersection of products
-        $widget.element.find(selectedOptions).each(function () {
-            var id = $(this).data('attribute-id'),
-                option = $(this).attr('data-option-selected');
+            // Generate intersection of products
+            $widget.element.find(selectedOptions).each(function () {
+                var id = $(this).data('attribute-id'),
+                    option = $(this).attr('data-option-selected');
 
-            if (!$widget.options.jsonConfig.salable[id] || !$widget.options.jsonConfig.salable[id][option]) {
-                return;
-            }
+                if (!$widget.options.jsonConfig.salable[id] || !$widget.options.jsonConfig.salable[id][option]) {
+                    return;
+                }
 
-            products = [...products, ...$widget.options.jsonConfig.salable[id][option]];
-        });
-        return products;
-    },
+                products = [...products, ...$widget.options.jsonConfig.salable[id][option]];
+            });
+            return products;
+        },
 
         /**
          * Get chosen product id
@@ -625,7 +625,7 @@ define([
                 // salable products are added only if Catalog -> Inventory -> Stock Options -> Display Out of Stock Products is set to Yes
                 // When out of stock products are not diaplayed in shop there is an empty object under salable key and method _CalcProduct is used to get salable products
                 if ($widget.options.jsonConfig.salable && Object.keys($widget.options.jsonConfig.salable).length) {
-                    products = $widget._getSalableSelectedProducts(id);
+                    products = $widget._GetSalableSelectedProducts(id);
                 } else {
                     products = $widget._CalcProducts(id);
                 }
