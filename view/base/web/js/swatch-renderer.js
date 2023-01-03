@@ -174,24 +174,24 @@ define([
          * @returns {Array}
          * @private
          */
-                 _getSalableSelectedProducts: function () {
-                    var $widget = this,
-                        selectedOptions = '.' + $widget.options.classes.attributeClass + '[data-option-selected]',
-                        products = [];
-        
-                    // Generate intersection of products
-                    $widget.element.find(selectedOptions).each(function () {
-                        var id = $(this).data('attribute-id'),
-                            option = $(this).attr('data-option-selected');
-        
-                        if (!$widget.options.jsonConfig.salable[id] || !$widget.options.jsonConfig.salable[id][option]) {
-                            return;
-                        }
-        
-                        products = [...products, ...$widget.options.jsonConfig.salable[id][option]];
-                    });
-                    return products;
-                },
+        _getSalableSelectedProducts: function () {
+        var $widget = this,
+            selectedOptions = '.' + $widget.options.classes.attributeClass + '[data-option-selected]',
+            products = [];
+
+        // Generate intersection of products
+        $widget.element.find(selectedOptions).each(function () {
+            var id = $(this).data('attribute-id'),
+                option = $(this).attr('data-option-selected');
+
+            if (!$widget.options.jsonConfig.salable[id] || !$widget.options.jsonConfig.salable[id][option]) {
+                return;
+            }
+
+            products = [...products, ...$widget.options.jsonConfig.salable[id][option]];
+        });
+        return products;
+    },
 
         /**
          * Get chosen product id
