@@ -15,6 +15,13 @@
                     <ticket_id>MGS-4747</ticket_id>
                 </entry>
             </tag>
+            <tag version="1.4.1" date="2022-01-04">
+                <entry>
+                    <type>FIX</type>
+                    <overview>Restore old method for calculation of salable products when there is empty object under salable key</overview>
+                    <ticket_id>MGS-4747</ticket_id>
+                </entry>
+            </tag>
         </changelog>
     </module>
 </config>
