@@ -615,15 +615,17 @@ define([
                 return;
             }
 
-            // Disable not available options
+            /**
+             * Disable not available options
+             * Products under salable key are present in Magento >= 2.4.4
+             * salable products are added only if Catalog -> Inventory -> Stock Options -> Display Out of Stock Products is set to Yes
+             * When out of stock products are not diaplayed in shop there is an empty object under salable key and method _CalcProduct is used to get salable products
+             */
             controls.each(function () {
                 var $this = $(this);
                 var id = $this.data('attribute-id');
                 var products = [];
 
-                // Products under salable key are present in Magento >= 2.4.4
-                // salable products are added only if Catalog -> Inventory -> Stock Options -> Display Out of Stock Products is set to Yes
-                // When out of stock products are not diaplayed in shop there is an empty object under salable key and method _CalcProduct is used to get salable products
                 if ($widget.options.jsonConfig.salable && Object.keys($widget.options.jsonConfig.salable).length) {
                     products = $widget._GetSalableSelectedProducts(id);
                 } else {
