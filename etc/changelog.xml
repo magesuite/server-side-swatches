@@ -15,14 +15,20 @@
                     <ticket_id>MGS-4747</ticket_id>
                 </entry>
             </tag>
-            <tag version="1.4.1" date="2022-12-07">
+            <tag version="1.4.1" date="2022-01-04">
+                <entry>
+                    <type>FIX</type>
+                    <overview>Restore old method for calculation of salable products when there is empty object under salable key</overview>
+                    <ticket_id>MGS-4747</ticket_id>
+                </entry>
+            </tag>
+            <tag version="1.4.2" date="2023-01-010">
                 <entry>
                     <type>FIX</type>
                     <overview>Do not disable swatches in review form</overview>
                     <ticket_id>MGS-5023</ticket_id>
                 </entry>
             </tag>
-            
         </changelog>
     </module>
 </config>
