@@ -65,12 +65,13 @@ $classes = $block->getClasses();
                 if (!$optionConfig) {
                     continue;
                 }
-
-                if ($block->getMoreButtonLimit() === $displayedOptions++) {
+                $displayedOptions += 1;
+                if ($block->getMoreButtonLimit() == ($displayedOptions - 1)) {
                     $moreButtonClass = $classes['more_button'];
                     $moreButtonText = $block->getMoreButtonText();
                     echo '<a href="#" class="' . $block->escapeHtml($moreButtonClass) .'"><span>' .
                         $block->escapeHtml($moreButtonText) . '</span></a>';
+                    continue;
                 }
 
                 echo $swatchOption->setOption($option)
