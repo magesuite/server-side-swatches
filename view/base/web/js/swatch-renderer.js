@@ -669,7 +669,7 @@ define([
             const $widget = this;
             const container = this.element;
 
-            if ($widget.options.jsonConfig.canDisplayShowOutOfStockStatus && $widget.options.jsonConfig.salable) {
+            if ($widget.options.jsonConfig.canDisplayShowOutOfStockStatus && $widget.options.jsonConfig.salable !== undefined) {
                 let salableProducts = {};
                 const swatchOptions = container.find('.swatch-option');
 

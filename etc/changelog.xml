@@ -22,11 +22,18 @@
                     <ticket_id>MGS-4747</ticket_id>
                 </entry>
             </tag>
-            <tag version="1.4.2" date="2023-01-010">
+            <tag version="1.4.2" date="2023-01-10">
                 <entry>
                     <type>FIX</type>
                     <overview>Do not disable swatches in review form</overview>
                     <ticket_id>MGS-5023</ticket_id>
+                </entry>
+            </tag>
+            <tag version="1.4.2" date="2023-02-10">
+                <entry>
+                    <type>FIX</type>
+                    <overview>Fix swatches when all optiona are out of stock</overview>
+                    <ticket_id>MGS-5042</ticket_id>
                 </entry>
             </tag>
         </changelog>
