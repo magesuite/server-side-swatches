@@ -1116,7 +1116,7 @@ define([
         _EmulateSelected: function (selectedAttributes) {
             $.each(selectedAttributes, $.proxy(function (attributeCode, optionId) {
                 var elem = this.element.find('.' + this.options.classes.attributeClass +
-                    '[data-attribute-code="' + attributeCode + '"] [data-option-id="' + optionId + '"]'),
+                    '[data-attribute-code="' + $.escapeSelector(attributeCode) + '"] [data-option-id="' + $.escapeSelector(optionId) + '"]'),
                     parentInput = elem.parent();
 
                 if (elem.hasClass('selected')) {
@@ -1140,7 +1140,7 @@ define([
         _EmulateSelectedByAttributeId: function (selectedAttributes) {
             $.each(selectedAttributes, $.proxy(function (attributeId, optionId) {
                 var elem = this.element.find('.' + this.options.classes.attributeClass +
-                    '[data-attribute-id="' + attributeId + '"] [data-option-id="' + optionId + '"]'),
+                    '[data-attribute-id="' + $.escapeSelector(attributeId) + '"] [data-option-id="' + $.escapeSelector(optionId) + '"]'),
                     parentInput = elem.parent();
 
                 if (elem.hasClass('selected')) {
