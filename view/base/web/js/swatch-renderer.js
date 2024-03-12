@@ -733,7 +733,7 @@ define([
                 result = $widget._getNewPrices(),
                 tierPriceHtml,
                 isShow;
-            
+
             $productPrice.trigger(
                 'updatePrice',
                 {

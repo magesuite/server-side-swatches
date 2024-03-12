@@ -43,7 +43,7 @@
                     <description>
                         Configurable products with DailyDeal active have it's price fixed for all variants (simple products represented by swatches).
                         Therefore clicking on swatch should not trigger price update event nor special-price class toggle, as this should be always on.
-                        Logic of toggling special-price class is somehow doubled therefore the same fix has to be applied here and in theme-creativeshop 
+                        Logic of toggling special-price class is somehow doubled therefore the same fix has to be applied here and in theme-creativeshop
                         where _UpdatePrice method has been extended with updatePriceLabel method.
                     </description>
                     <ticket_id>KRG-2705</ticket_id>
