@@ -729,11 +729,11 @@ define([
         _UpdatePrice: function () {
             var $widget = this,
                 $product = $widget.element.parents($widget.options.selectorProduct),
-                $productPrice = $product.find(`.product-info-price ${this.options.selectorProductPrice}`),
+                $productPrice = $product.find(`.product-info-price:not(.cs-price--pdp_dailydeal-countdown) ${this.options.selectorProductPrice}`),
                 result = $widget._getNewPrices(),
                 tierPriceHtml,
                 isShow;
-
+            
             $productPrice.trigger(
                 'updatePrice',
                 {
