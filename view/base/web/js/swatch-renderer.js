@@ -1,6 +1,8 @@
 /**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
+ * Script moved to introduce server siede rendering
+ * In case of issue check recent changes in orignial swatch renderer
+ * https://github.com/magento/magento2/commits/2.4.7/app/code/Magento/Swatches/view/base/web/js/swatch-renderer.js
+ * Aligned with Magento 2.4.7 in 04/2024
  */
 
 define([
@@ -56,7 +58,7 @@ define([
             });
 
             if (firstSwatch.length) {
-                $(firstSwatch).focus();
+                $(firstSwatch).trigger('focus');;
             }
         }
     });
@@ -584,7 +586,7 @@ define([
          */
         _OnMoreClick: function ($this) {
             $this.nextAll().show();
-            $this.blur().remove();
+            $this.trigger('blur').remove();
         },
 
         /**
