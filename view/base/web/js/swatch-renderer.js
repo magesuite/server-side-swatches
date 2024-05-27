@@ -1,5 +1,5 @@
 /**
- * Script moved to introduce server siede rendering
+ * Script moved to introduce server side rendering
  * In case of issue check recent changes in orignial swatch renderer
  * https://github.com/magento/magento2/commits/2.4.7/app/code/Magento/Swatches/view/base/web/js/swatch-renderer.js
  * Aligned with Magento 2.4.7 in 04/2024

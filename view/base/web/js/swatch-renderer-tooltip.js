@@ -1,6 +1,8 @@
 /**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
+ * Script moved to introduce server side rendering
+ * Changes added:
+ * - add mousedown event to hide tooltip on swatch select [MGS-5292]
+ * Aligned with Magento 2.4.7 in 05/2024
  */
 
 define([
@@ -55,7 +57,7 @@ define([
             $title = $element.find('.title');
             $corner = $element.find('.corner');
 
-            $this.hover(function () {
+            $this.on('mouseenter', function () {
                 if (!$this.hasClass('disabled')) {
                     timer = setTimeout(
                         function () {
@@ -121,7 +123,9 @@ define([
                         $widget.options.delay
                     );
                 }
-            }, function () {
+            });
+
+            $this.on('mouseleave mousedown', function () {
                 $element.hide();
                 clearTimeout(timer);
             });
