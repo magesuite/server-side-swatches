@@ -56,6 +56,13 @@
                     <ticket_id>MGS-5271</ticket_id>
                 </entry>
             </tag>
+            <tag version="1.4.6" date="2024-05-24">
+                <entry>
+                    <type>FIX</type>
+                    <overview>Remove deprecated jquery methods and add mousedown event to hide tooltip on swatch select</overview>
+                    <ticket_id>MGS-5292</ticket_id>
+                </entry>
+            </tag>
         </changelog>
     </module>
 </config>
