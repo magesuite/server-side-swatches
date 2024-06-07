@@ -105,6 +105,9 @@ define([
             // selector of category product tile wrapper
             selectorProductTile: '.product-item',
 
+             // selector of daily deal teaser wrapper
+            selectorDailyDealTeaser: '.cs-daily-deal-teaser',
+
             // number of controls to show (false or zero = show all)
             numberToShow: false,
 
@@ -271,7 +274,7 @@ define([
                 }];
             }
 
-            this.productForm = this.element.parents(this.options.selectorProductTile).find('form:first');
+            this.productForm = this.element.parents(`${this.options.selectorProductTile}, ${this.options.selectorDailyDealTeaser}`).find('form:first');
             this.inProductList = this.productForm.length > 0;
         },
 
