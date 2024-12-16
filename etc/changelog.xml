@@ -75,6 +75,13 @@
                     <ticket_id>KRG-2739</ticket_id>
                 </entry>
             </tag>
+            <tag version="1.5.1" date="2024-12-16">
+                <entry>
+                    <type>FIX</type>
+                    <overview>Render the tier template if a swatch has already been selected.</overview>
+                    <ticket_id>HAAR-4585</ticket_id>
+                </entry>
+            </tag>
         </changelog>
     </module>
 </config>

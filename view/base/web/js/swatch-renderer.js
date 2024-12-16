@@ -231,6 +231,8 @@ define([
                 this._debouncedLoadProductMedia = _.debounce(this._LoadProductMedia.bind(this), 500);
             }
 
+            this.options.tierPriceTemplate = $(this.options.tierPriceTemplateSelector).html();
+
             if (this.options.jsonConfig !== '' && this.options.jsonSwatchConfig !== '') {
                 // store unsorted attributes
                 this.options.jsonConfig.mappedAttributes = _.clone(this.options.jsonConfig.attributes);
@@ -241,7 +243,6 @@ define([
             } else {
                 console.log('SwatchRenderer: No input data received');
             }
-            this.options.tierPriceTemplate = $(this.options.tierPriceTemplateSelector).html();
         },
 
         /**
