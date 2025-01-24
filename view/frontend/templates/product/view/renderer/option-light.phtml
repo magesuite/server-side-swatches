@@ -18,6 +18,13 @@ $optionIndex = $block->getIndex();
 $optionLabel = $block->escapeHtml($optionConfig['label'] ?? '');
 $sizeConfig = $block->getSizeConfig();
 
+$attributeId = $block->getAttributeId();
+$salableConfig = $block->getConfig()['salable'];
+$classes['status'] = '';
+
+$isSalable = isset($salableConfig[$attributeId][$optionId]);
+$isSalable ? $classes['status'] = '' : $classes['status'] = 'disabled ';
+
 $optionWidth = 110;
 $optionHeight = 90;
 
@@ -34,7 +41,7 @@ if (empty($option['products'])) {
     $optionAttributes .= ' data-option-empty="true"';
 }
 
-$optionHtml = '<div data-option-id="' . $optionId . '" class="' . $classes['option'];
+$optionHtml = '<div data-option-id="' . $optionId . '" class="' . $classes['status'] . $classes['option'];
 switch ($optionType) {
     case 0:
         // Text
