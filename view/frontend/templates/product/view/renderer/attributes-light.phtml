@@ -38,6 +38,8 @@ $classes = $block->getClasses();
             $swatchOption = $block
                 ->getChildBlock('swatch_option')
                 ->setSizeConfig($sizeConfig)
+                ->setConfig($config)
+                ->setAttributeId($attributeId)
                 ->setAttributeLabelId($attributeLabelId)
                 ->setClasses($classes);
 
