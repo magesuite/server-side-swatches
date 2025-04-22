@@ -89,6 +89,16 @@
                     <ticket_id>RKL-739</ticket_id>
                 </entry>
             </tag>
+            <tag version="1.5.3" date="2025-04-22">
+                <entry>
+                    <type>FIX</type>
+                    <overview>Fix updating normal price label ("from") by narrowing target to product on which operation (event handling) is performed</overview>
+                    <description>
+                        Fix has been introduced in Magento 2.4.7
+                    </description>
+                    <ticket_id>LOWA-608</ticket_id>
+                </entry>
+            </tag>
         </changelog>
     </module>
 </config>
