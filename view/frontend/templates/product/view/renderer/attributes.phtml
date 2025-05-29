@@ -99,6 +99,8 @@ $classes = $block->getClasses();
             data-msg-required="<?= $block->escapeHtml(__('Please select %1', $attributeLabel)) ?>"
             aria-required="true"
             aria-invalid="false"
+            aria-hidden="true"
+            aria-label="<?= $block->escapeHtmlAttr(__('Selected swatch attribute')) ?>"
         >
     </div>
 <?php endforeach; ?>
