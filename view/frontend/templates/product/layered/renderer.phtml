@@ -26,7 +26,6 @@
                         case '3':
                             ?>
                             <div class="swatch-option <?= $block->escapeHtmlAttr($label['custom_style']) ?>"
-                                tabindex="-1"
                                 option-type="3"
                                 data-option-type="3"
                                 option-id="<?= $block->escapeHtmlAttr($option) ?>"
@@ -52,7 +51,6 @@
                             $escapedUrl = $block->escapeUrl($swatchImagePath);
                             ?>
                             <div class="swatch-option image <?= $block->escapeHtmlAttr($label['custom_style']) ?>"
-                                tabindex="-1"
                                 option-type="2"
                                 data-option-type="2"
                                 option-id="<?= $block->escapeHtmlAttr($option) ?>"
@@ -69,7 +67,6 @@
                         case '1':
                             ?>
                             <div class="swatch-option color <?= $block->escapeHtmlAttr($label['custom_style']) ?>"
-                                tabindex="-1"
                                 option-type="1"
                                 data-option-type="1"
                                 option-id="<?= $block->escapeHtmlAttr($option) ?>"
@@ -87,7 +84,6 @@
                         default:
                             ?>
                             <div class="swatch-option text <?= $block->escapeHtmlAttr($label['custom_style']) ?>"
-                                tabindex="-1"
                                 option-type="0"
                                 data-option-type="0"
                                 option-id="<?= $block->escapeHtmlAttr($option) ?>"
