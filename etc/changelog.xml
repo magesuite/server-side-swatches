@@ -102,7 +102,7 @@
             <tag version="1.5.4" date="2025-05-28">
                 <entry>
                     <type>FEATURE</type>
-                    <overview>A11Y - adjust hidden input field of swatches</overview>
+                    <overview>A11y - adjust hidden input field of swatches</overview>
                     <description>
                         Visually hidden swatches input field has been adjusted in order to exclude it from the accessibility API as it is non-interactive content.
                         Adjustments includes:
@@ -110,6 +110,19 @@
                         - adding aria-hidden attribute for input element,
                     </description>
                     <ticket_id>KRG-3072</ticket_id>
+                </entry>
+            </tag>
+            <tag version="1.5.8" date="2025-09-15">
+                <entry>
+                    <type>FEATURE</type>
+                    <overview>A11y - adjust aria labels</overview>
+                    <description>
+                        Applied changes:
+                        - changed `aria-labelledby` to `aria-label` since former should have a unique value (attributes.phtml),
+                        - added product ID to `attributeLabelId` in order to make it unique (attributes.phtml),
+                        - removed `$attributeLabelId` since it was not used anywhere (attributes-light.phtml, option-light.phtml),
+                    </description>
+                    <ticket_id>KRG-3152</ticket_id>
                 </entry>
             </tag>
         </changelog>

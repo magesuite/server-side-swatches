@@ -8,7 +8,6 @@
 
 $option = $block->getOption();
 $optionConfig = $block->getOptionConfig();
-$attributeLabelId = $block->getAttributeLabelId();
 $classes = $block->getClasses();
 
 $optionHtml = '';
@@ -33,7 +32,7 @@ if (isset($sizeConfig['swatchThumb'])) {
     $optionHeight = $sizeConfig['swatchThumb']['height'];
 }
 
-$optionAttributes = ' aria-label="' . $optionLabel . '"';
+$optionAttributes = sprintf('role="listitem" aria-label="%s"', $optionLabel);
 
 $optionValue = $block->escapeHtml($optionConfig['value'] ?? '');
 

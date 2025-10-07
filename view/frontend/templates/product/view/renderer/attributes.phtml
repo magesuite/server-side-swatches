@@ -9,6 +9,8 @@
 $config = $block->getConfig();
 $swatchConfig = $block->getSwatchConfig();
 $sizeConfig = $block->getSizeConfig();
+$productId = $config['productId'] ?? null;
+$productName = $config['product_name'] ?? null;
 $classes = $block->getClasses();
 ?>
 
@@ -16,7 +18,7 @@ $classes = $block->getClasses();
     <?php
     $attributeCode = $attribute['code'];
     $attributeLabel = $attribute['label'];
-    $attributeLabelId = "option-label-$attributeCode-$attributeId";
+    $attributeLabelId = sprintf('option-label-%s-%s-%s', $attributeCode, $attributeId, $productId);
     $attributeLabelClass = $classes['attribute_label'];
     $attributeSelectedClass = $classes['attribute_selected_option'];
 
@@ -41,7 +43,7 @@ $classes = $block->getClasses();
             aria-invalid="false"
             aria-required="true"
             role="listbox"
-            aria-labelledby="<?= $block->escapeHtml($attributeLabelId) ?>"
+            aria-label="<?= $block->escapeHtml(sprintf(__('%s for %s (%s)'), $attributeLabel, $productName, $productId)) ?>"
             class="<?= $block->escapeHtml($classes['attribute_options_wrapper']) ?>"
         >
         <?php
