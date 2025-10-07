@@ -9,6 +9,8 @@
 $config = $block->getConfig();
 $swatchConfig = $block->getSwatchConfig();
 $sizeConfig = $block->getSizeConfig();
+$productId = $config['productId'] ?? null;
+$productName = $config['product_name'] ?? null;
 $classes = $block->getClasses();
 ?>
 
@@ -16,7 +18,6 @@ $classes = $block->getClasses();
     <?php
     $attributeCode = $attribute['code'];
     $attributeLabel = $attribute['label'];
-    $attributeLabelId = "option-label-$attributeCode-$attributeId";
     $attributeLabelClass = $classes['attribute_label'];
 
     if (!$block->getEnableControlLabel()) {
@@ -29,7 +30,9 @@ $classes = $block->getClasses();
         data-attribute-id="<?= $block->escapeHtml($attributeId) ?>"
     >
         <span class="<?= $block->escapeHtml($attributeLabelClass) ?>"><?= $block->escapeHtml($attributeLabel) ?></span>
-        <div class="<?= $block->escapeHtml($classes['attribute_options_wrapper']) ?>">
+        <div class="<?= $block->escapeHtml($classes['attribute_options_wrapper']) ?>"
+            role="list"
+            aria-label="<?= $block->escapeHtml(sprintf(__('%s for %s (%s)'), $attributeLabel, $productName, $productId)) ?>">
         <?php
         if (isset($swatchConfig[$attributeId])) {
             $attributeConfig = $swatchConfig[$attributeId];
@@ -40,7 +43,6 @@ $classes = $block->getClasses();
                 ->setSizeConfig($sizeConfig)
                 ->setConfig($config)
                 ->setAttributeId($attributeId)
-                ->setAttributeLabelId($attributeLabelId)
                 ->setClasses($classes);
 
             foreach ($attribute['options'] as $optionIndex => $option) {
