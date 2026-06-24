@@ -677,7 +677,7 @@ define([
 
             if ($widget.options.jsonConfig.canDisplayShowOutOfStockStatus && $widget.options.jsonConfig.salable !== undefined) {
                 let salableProducts = {};
-                const swatchOptions = container.find('.swatch-option');
+                const swatchOptions = container.find('.swatch-option:not(.swatch-variant)');
 
                 $.each(this.options.jsonConfig.attributes, function () {
                     const item = this;
