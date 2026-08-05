@@ -2,7 +2,7 @@
  * Script moved to introduce server side rendering
  * In case of issue check recent changes in orignial swatch renderer
  * https://github.com/magento/magento2/commits/2.4.7/app/code/Magento/Swatches/view/base/web/js/swatch-renderer.js
- * Aligned with Magento 2.4.7 in 04/2024
+ * Aligned with Magento 2.4.9 in 08/2026
  */
 
 define([
@@ -58,7 +58,7 @@ define([
             });
 
             if (firstSwatch.length) {
-                $(firstSwatch).trigger('focus');;
+                $(firstSwatch).trigger('focus');
             }
         }
     });
@@ -186,7 +186,6 @@ define([
             var $widget = this,
                 selectedOptions = '.' + $widget.options.classes.attributeClass + '[data-option-selected]',
                 products = [];
-
             // Generate intersection of products
             $widget.element.find(selectedOptions).each(function () {
                 var id = $(this).data('attribute-id'),
@@ -220,6 +219,7 @@ define([
             if ($(this.element).attr('data-rendered')) {
                 return;
             }
+
             $(this.element).attr('data-rendered', true);
 
             this.inReviewForm = !!this.element.parents('#review-form').length;
@@ -490,7 +490,7 @@ define([
 
             $widget._Rebuild();
 
-            if ($priceBox.is(':data(mage-priceBox)')) {
+            if ($priceBox.data('mage-priceBox') !== undefined) {
                 $widget._UpdatePrice();
             }
 
@@ -608,7 +608,6 @@ define([
                 .attr('disabled', true)
                 .addClass('disabled')
                 .attr('tabindex', '-1');
-
             this.disableSwatchForOutOfStockProducts();
         },
 
@@ -1067,7 +1066,13 @@ define([
          * @private
          */
         _addFotoramaVideoEvents: function (isInitial) {
-            if (_.isUndefined($.mage.AddFotoramaVideoEvents)) {
+            if (_.isUndefined($.mage.AddFotoramaVideoEvents)
+                || !$(this.options.mediaGallerySelector).AddFotoramaVideoEvents('instance')
+            ) {
+                $(this.options.mediaGallerySelector).on('addfotoramavideoeventscreate', function () {
+                    this._addFotoramaVideoEvents(isInitial);
+                }.bind(this));
+
                 return;
             }
 
